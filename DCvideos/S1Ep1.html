@@ -1,27 +1,103 @@
 <!DOCTYPE html>
-<!-- 
-Sito fatto interamente da Rufus. Enjoy <3
- -->
-
+<html>
 <head>
-    <link rel="shortcut icon" typr="x-icon" href="DC.png">
-    <title>S1Ep1</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<title>S1Ep1</title>
+<meta name="title" content="Sito web ufficiale di Rufus ufficiale di Rufus">
+<meta name="description" content="DCSHG S1Ep1">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+*{
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin-top: 0;
+}
+  .flipped {
+   transform: scaleX(-1);
+   filter: FlipH;
+   -ms-filter: "FlipH";
+  }
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+#diz {
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: 1700px;
+	width: 1700px;
+    padding: 0px;
+    margin: auto;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;	
+	position:relative;
+	
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px 8px 0px 0px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0.5);  
+}
+
+li {
+  float: left;
+}
+
+la {
+  float: right;
+}
+
+la a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 9px;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #000000;
+}
+
+</style>
+</head>
 <body>
-    <div class="banner">
-        <div class="navbar">
-            <ul>
-                <br> <li> <a class="a" href="DCSHG.html">Pagina principale</a></li> <br> <br>
-                <h1>Nuove amicizie - parte 1</h1>
-                <br> <br>
-                <video controls width="1200">
-                    <source src="S1Ep1.mp4">
-                </video>
-                <br> <br> <br>
-                <h1><a class="a" href="S1Ep2.html">1x02 - Nuove amicizie - parte 2 </a></li> </h1> <br>
-            </ul>
-        </div class="navbar">
-    </div class="banner">
+
+<div style="margin-top: 40px;" class="container;" id="container">
+<div id="diz">
+    <center><h1 style="margin-bottom: 7px;"><a class="a" href="DCSHG.html">Elenco Episodi</a></h1></center>
+
+<div id="player">
+    <iframe src="https://ok.ru/videoembed/7322510232273" frameborder="0" style=" width:99%; height:45vw; background-image:url(https://upload.wikimedia.org/wikipedia/commons/2/29/Loader.gif); background-repeat: no-repeat; background-position: center; background-size: 90%; 100%;" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true">Si è verificato un problema con il tuo browser.</iframe>
+</div>
+
+  <center><h1 style="margin-bottom: 7px;"><a class="a" href="S1Ep2.html">Episodio successivo</a></h1></center>
+
 </body>
+</html> 
