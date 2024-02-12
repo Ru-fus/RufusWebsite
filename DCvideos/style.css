@@ -27,15 +27,15 @@ body {
     flex-direction: column;
     align-items: center;
     font: normal 14px Cursive;
-        background-color: #000;
-        color: #cccccc;
+    color: #cccccc;
+    background: #000000 none repeat scroll top left;
 }
 
 .centered-box {
-    width: 50%; 
+    width: 50%;
     padding: 30px;
-    background-color: rgba(172, 38, 190, 0.192);
-    color: #cccccc;
+    background-color: rgba(172, 38, 190, 0.192); 
+    color: #cccccc; 
     text-align: center;
     margin-bottom: 20px;
 }
@@ -46,7 +46,6 @@ body {
     align-items: center;
     text-align: center;
     margin-top: 14px;
-    padding-top: 20px; 
 }
 
 .discord-widget {
@@ -90,8 +89,7 @@ body {
 .b {
     color: #2b59af; 
     text-decoration: none;
-    border-radius: 10px;
-    font: normal 20px Cursive;
+    border-radius: 5px;
 }
 
 .qa-table {
@@ -127,10 +125,36 @@ body {
     height: auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    word-wrap: break-word;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
+
+
+
+
+
+
+
+
+/* AGGIUSTAMENTI PER MOBILE */
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin-top: 10px;
+    }
+
+    .main-list {
+        margin-top: 15px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        justify-content: center; /* Center the icons on mobile */
+    }
+
+    .social-icons a {
+        margin: 0 10px; /* Adjust the margin as needed */
+    }
+}
