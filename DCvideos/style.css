@@ -26,19 +26,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font: normal 14px Cursive;
+    font: normal 14px Arial;
     color: #cccccc;
     background: #000000 none repeat scroll top left;
 }
 
-.centered-box {
-    width: 50%;
-    padding: 30px;
-    background-color: rgba(172, 38, 190, 0.192); 
-    color: #cccccc; 
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 .main-list {
     display: flex;
@@ -48,113 +40,27 @@ body {
     margin-top: 14px;
 }
 
-.discord-widget {
-    display: block;
-    margin: 0 auto;
-}
-
-.logo {
-    width: 72px;
-    max-width: 100%;
-    height: auto;
-}
-
-.dc {
-    width: 450px;
-    height: auto;
-}
-.pfp{
-    width: 400px;
-    height: auto;
-}
-
-.social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 0px;
-}
-
-.social-icons a {
-    flex: 0 0 auto;
-    margin: 0 5px; 
-}
-
-.scroll-to-social {
-    color: #2b59af; 
-    text-decoration: none;
-    border-radius: 5px;
-}
-
 .b {
     color: #2b59af; 
     text-decoration: none;
     border-radius: 5px;
 }
 
-.qa-table {
-    width: 72%;
-    border-collapse: collapse;
-    margin-top: 20px;
+h1, h2, h3, h4, h5, h6 {
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.qa-table td {
-    border: 2px solid #cccccc;
-    padding: 15px;
-    text-align: left;
-}
-
-.qa-table .question {
-    width: 27%;
-    background-color: #af2b2b65;
-    color: #ffffff;
-}
-
-.qa-table .answer {
-    width: auto;
-}
-
-.qa-table .answer .grigio {
-    color: #cccccc; 
-}
-.qa-table .answer .verde {
-    color: #7BB602;
-}
-.dog {
-    width: 250px;
-    height: auto;
-}
-
-
-
-
-
-
-
-
-
-
-/* AGGIUSTAMENTI PER MOBILE */
-
-@media only screen and (max-width: 600px) {
-    body {
-        margin-top: 10px;
+@media (max-width: 768px) {
+    .centered-box {
+        width: 90%;
     }
+}
 
-    .main-list {
-        margin-top: 15px;
-    }
-
-    .container {
-        width: 100%;
-    }
-
-    .social-icons {
-        flex-direction: row;
-        justify-content: center; /* Center the icons on mobile */
-    }
-
-    .social-icons a {
-        margin: 0 10px; /* Adjust the margin as needed */
+/* Stile per schermi ancora più piccoli, come dispositivi mobili */
+@media (max-width: 480px) {
+    .centered-box {
+        width: 95%;
     }
 }

@@ -26,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font: normal 14px Cursive;
+    font: normal 14px Arial;
         background-color: #000;
         color: #cccccc;
 }
@@ -127,33 +127,26 @@ body {
     height: auto;
 }
 
+.logo, .dc {
+    max-width: 100%;  /* Le immagini non supereranno mai la larghezza del loro contenitore */
+    height: auto;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    word-wrap: break-word;
-    max-width: 100%;
+    max-width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+@media (max-width: 768px) {
+    .centered-box {
+        width: 90%;
+    }
+}
 
-
-
-
-
-
-
-.html5-vpl_vid .html5-vpl_vid_display {
-    width: 100%;
-    height: 100%;
-    display: block;
-    transform-origin: center;
-    transition: transform .2s ease-in-out;
-  }
-  .html5-vpl {
-    font: normal 12px/12px Arial,Helvetica,sans-serif;
-    color: #fff;
-    visibility: visible !important;
-  }
-  .vid-card_cnt {
-    cursor: pointer;
-  }
- 
+/* Stile per schermi ancora più piccoli, come dispositivi mobili */
+@media (max-width: 480px) {
+    .centered-box {
+        width: 95%;
+    }
+}
