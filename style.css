@@ -7,6 +7,16 @@ html, body {
     color: rgb(0, 0, 0);
 }
 
+body {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: normal 14px Arial;
+    background-color: #000;
+    color: #cccccc;
+}
+
 .a {
     position: relative;
     text-align: center;
@@ -19,16 +29,6 @@ html, body {
 
 .a:hover {
     color: #cccccc;
-}
-  
-body {
-    margin-top: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font: normal 14px Arial;
-        background-color: #000;
-        color: #cccccc;
 }
 
 .centered-box {
@@ -54,19 +54,21 @@ body {
     margin: 0 auto;
 }
 
-.logo {
-    width: 72px;
+.logo, .dc, .pfp, .dog {
     max-width: 100%;
     height: auto;
 }
 
+.logo {
+    width: 72px;
+}
+
 .dc {
     width: 450px;
-    height: auto;
 }
-.pfp{
+
+.pfp {
     width: 400px;
-    height: auto;
 }
 
 .social-icons {
@@ -119,17 +121,9 @@ body {
 .qa-table .answer .grigio {
     color: #cccccc; 
 }
+
 .qa-table .answer .verde {
     color: #7BB602;
-}
-.dog {
-    width: 250px;
-    height: auto;
-}
-
-.logo, .dc {
-    max-width: 100%;  /* Le immagini non supereranno mai la larghezza del loro contenitore */
-    height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -139,26 +133,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    .centered-box {
-        width: 90%;
-    }
-    .qa-table{
-        width: 90%;
-    }
-    .pfp{
+    .centered-box, .qa-table, .pfp {
         width: 90%;
     }
 }
 
-/* Stile per schermi ancora più piccoli, come dispositivi mobili */
 @media (max-width: 480px) {
-    .centered-box {
+    .centered-box, .qa-table {
         width: 95%;
     }
-    .qa-table{
-        width: 95%;
-    }
-    .pfp{
+
+    .pfp {
         width: 85%;
     }
 }

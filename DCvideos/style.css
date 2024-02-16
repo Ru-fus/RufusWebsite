@@ -7,20 +7,6 @@ html, body {
     color: rgb(0, 0, 0);
 }
 
-.a {
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    color: #cccccc;
-    letter-spacing: 1px;
-    padding: 0px 10px;
-    display: inline-block;
-}
-
-.a:hover {
-    color: #cccccc;
-}
-  
 body {
     margin-top: 18px;
     display: flex;
@@ -31,6 +17,21 @@ body {
     background: #000000 none repeat scroll top left;
 }
 
+.a {
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    color: #cccccc;
+    letter-spacing: 1px;
+    padding: 0px 10px;
+    display: inline-block;
+    border-radius: 5px; /* Bordo con angoli arrotondati */
+    margin: 5px; /* Spazio tra i link */
+}
+
+.a:hover {
+    color: #cccccc;
+}
 
 .main-list {
     display: flex;
@@ -40,15 +41,17 @@ body {
     margin-top: 14px;
 }
 
-.b {
-    color: #2b59af; 
+.b, .c {
     text-decoration: none;
     border-radius: 5px;
 }
+
+.b {
+    color: #2b59af;
+}
+
 .c {
-    color: #af2b2b; 
-    text-decoration: none;
-    border-radius: 5px;
+    color: #af2b2b;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,32 +65,22 @@ h1, h2, h3, h4, h5, h6 {
         width: 90%;
     }
     iframe {
-        height: 400px;  /* Riduci l'altezza su schermi più piccoli */
+        height: 400px;  
     }
 }
 
-/* Stile per schermi ancora più piccoli, come dispositivi mobili */
 @media (max-width: 480px) {
     .centered-box {
         width: 95%;
     }
     iframe {
-        height: 300px;  /* Riduci ulteriormente l'altezza per dispositivi mobili */
+        height: 300px;  
     }
 }
 
 iframe {
-    width: 100%;  /* L'iframe occupa il 100% della larghezza del suo contenitore */
-    height: 600px;  /* Altezza fissa per evitare che diventi troppo alto su schermi più piccoli */
-    max-width: 1200px;  /* Altezza massima dell'iframe */
-    margin: 20px 0;  /* Margine superiore e inferiore per uno spazio adeguato */
-}
-
-.flipped-video {
-    transform: scaleX(-1);
-}
-
-.flipped-container {
-    transform: scaleX(-1);
-    display: inline-block;
+    width: 100%;  
+    height: 600px;  
+    max-width: 1200px;  
+    margin: 20px 0;  
 }
