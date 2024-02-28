@@ -17,8 +17,8 @@
 
 <body>
         <h1 style="margin-bottom: 7px;"><a class="b" href="index.html">PAGINA PRINCIPALE</a></h1>
-
         <h1  style="margin-bottom: 10px;">Approfondimenti su mitico Rufus</h1>
+        <h1 style="margin-bottom: 10px;"><p id="AutoType1"></p></h1>
         <h3>Questa pagina è necessario poiché potreste imbattervi in un Rufus in una grande varietà di forme e dimesioni!</h3>
         <h3>Vi guiderò alla scoperta di questa mistica creatura:</h3>
         <h3  style="margin-bottom: 5px;">queste sono le mie pfp più comuni che cambio in base al periodo</h3>
@@ -27,9 +27,6 @@
         <img class="pfp" style="margin-bottom: 15px;" src="Image.Videos/Kara.jpg" alt="Supergirl">
         <img class="pfp" style="margin-bottom: 15px;" src="Image.Videos/Peridot.jpg" alt="Peridot">
         <img class="pfp" style="margin-bottom: 90px;" src="Image.Videos/flower.png" alt="Flower">
-        
-
-
 
         <h1  style="margin-bottom: 10px;">Domande generiche</h1>
 
@@ -69,7 +66,7 @@
             </tr>
             <tr>
                 <td class="question">Interessi?</td>
-                <td class="answer">Giochi di carte di vario tipo <br> <br> <img class="dog" style="margin-bottom: 15px;" src="Image.Videos/MinaAZeroZioPera.png" alt="Mina"><br> L'importante e' essere il piu' tossico possibile su ognuno di essi.</td>
+                <td class="answer">Giochi di carte di vario tipo <br> <br> <img class="dog" style="margin-bottom: 15px;" src="Image.Videos/MinaAZeroZioPera.png" alt="Mina"><br> L'importante e' essere il piu' tossico possibile su ognuno di essi. <br>"SpazioVuoto" su DuelingBook</td>
             </tr>
             <tr>
                 <td class="question">Pratichi qualche strumento?</td>
@@ -89,7 +86,23 @@
         </a>
 
     </ul>
+        
 
+    <script>
+            function typeWriter(text, elementId, speed) {
+                let i = 0;
+                const element = document.getElementById(elementId);
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+            typeWriter("Chi più di me?", "AutoType1", 100);
+        </script>
 </body>
 
 </html>
