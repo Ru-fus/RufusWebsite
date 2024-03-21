@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Times New Roman', Times, serif;
 }
 
 html,
@@ -13,7 +14,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font: normal 14px Arial;
+	font: 14px;
 	background-color: #000;
 	color: #cccccc;
 }
@@ -61,6 +62,10 @@ body {
 .dog {
 	max-width: 100%;
 	height: auto;
+}
+.mc {
+	max-width: 100%;
+	max-width: 500px;
 }
 
 .logo {
@@ -154,7 +159,8 @@ h6 {
 @media (max-width: 768px) {
 	.centered-box,
 	.qa-table,
-	.pfp {
+	.pfp,
+	.mc {
 		width: 90%;
 	}
 }
@@ -165,7 +171,8 @@ h6 {
 		width: 95%;
 	}
 
-	.pfp {
+	.pfp
+	.mc {
 		width: 85%;
 	}
 }
@@ -174,12 +181,12 @@ h6 {
 	opacity: 0;
 	filter: blur(5px);
 	transform: translateY(-100%);
-	transition: 1s;
+	transition: all 1s;
 }
 .show {
 	opacity: 1;
 	filter: blur(0);
-	transform: translateY(0);
+	transform: translateX(0);
 }
 @media (prefers-reduced-motion) {
 	.hidden {
