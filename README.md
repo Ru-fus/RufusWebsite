@@ -1,2 +1,2 @@
-*Questo README non è nemmeno necessario*
+*Inutile README*
 Se vedete questo avete sbagliato link
