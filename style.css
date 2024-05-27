@@ -156,17 +156,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 5px;
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.image-wrapper {
-    position: relative;
-    margin-bottom: 15px;
-    margin-right: 10px;
-}
 
 .description {
     display: none;
@@ -179,6 +168,19 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
 }
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px; /* Aggiungi margine a sinistra */
+}
+
 .image-wrapper:hover .description {
     display: block;
 }
@@ -189,11 +191,31 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+@media (max-width: 768px) {
+    .centered-box, .qa-table, .pfp {
+        width: 90%;
+    }
+}
 
+@media (max-width: 480px) {
+    .centered-box, .qa-table {
+        width: 95%;
+    }
 
+    .image-wrapper {
+        width: 100%; /* Assicurati che il wrapper occupi tutta la larghezza */
+        display: flex;
+        justify-content: center;
+        margin-right: 0; /* Rimuovi il margine a destra */
+        margin-left: 0;  /* Rimuovi il margine a sinistra */
+    }
 
-
-
+    .pfp, .rufusimg {
+        width: 85%;
+        height: auto;
+        margin: 0 auto; /* Centra l'immagine */
+    }
+}
 
 
 
@@ -207,17 +229,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 480px) {
-    .centered-box, .qa-table  {
+    .centered-box, .qa-table {
         width: 95%;
     }
 
     .pfp, .rufusimg {
         width: 85%;
     }
-
 }
-
-
 
 
 .hidden {
