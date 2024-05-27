@@ -12,7 +12,6 @@ Piacere, io sono Rufus, il creatore di questo sito web. Sono un ragazzo dell'Abr
 
 In questa sezione vengono esposti i progetti realizzati da Rufus:
 
-- **DC Streaming**: Uno streaming di serie TV legate all'universo DC. *Nota: a causa del copyright lo streaming è specchiato, ma è disponibile un link per il download della serie.*
   
   ![DC Streaming](Image.Videos/DC.png)
 
