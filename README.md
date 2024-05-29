@@ -2,13 +2,7 @@
 
 ![Logo Rufus](Rufus%20logos/Rufus%20Black.png)
 
-Questo repository contiene il codice sorgente del sito web ufficiale di Rufus, un ragazzo creativo dall'Abruzzo che ha sviluppato questo sito web per condividere i suoi progetti e interessi con il mondo. 
-
-## Chi è Rufus?
-
-Piacere, io sono Rufus, il creatore di questo sito web. Sono un ragazzo dell'Abruzzo appassionato di tecnologia, musica, e tanto altro. Ho sviluppato questo sito per noia e per avere un punto di riferimento per condividere le mie creazioni e passioni con chi ne è interessato.
-
-## Progetti
+## Progetti 
 
 In questa sezione vengono esposti i progetti realizzati da Rufus:
 
