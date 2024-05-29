@@ -9,7 +9,7 @@ In questa sezione vengono esposti i progetti realizzati da Rufus:
   
   ![DC Streaming](Image.Videos/DC.png)
 
-- **Download Texture di Minecraft**: Texture pack per il popolare gioco Minecraft.
+- **Download Texture di Minecraft**: Texture pack per Minecraft.
 
   ![Minecraft](Image.Videos/mc/mc.png)
 
