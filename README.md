@@ -1,6 +1,6 @@
 # Rufus - Sito Web Ufficiale
 
-![Logo Rufus](Rufus%20logos/Rufus%20Black.png)
+![Logo Rufus](images.videos/rufus.logos/Rufus%20Black.png)
 
 ## Progetti 
 
