@@ -20,7 +20,6 @@ Texture pack per Minecraft.
 
 Rufus è attivo su diverse piattaforme social, ecco alcuni link per seguirlo:
 
-- [Pinterest](https://www.pinterest.it/ltrufus/)
   ![Pinterest](Image.Videos/Rufus.Logos/Rufus%20Pinterest.png)
 - [YouTube](https://www.youtube.com/channel/UCTibWCGsj4U4lxBC4KPm-Gw)
   ![YouTube](Image.Videos/Rufus.Logos/Rufus%20Youtube.png)
