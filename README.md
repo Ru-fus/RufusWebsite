@@ -2,16 +2,19 @@
 
 ![Logo Rufus](images.videos/rufus.logos/Rufus%20Black.png)
 
-## Progetti 
+## Progetti
 
 In questa sezione vengono esposti i progetti realizzati da Rufus:
 
-  
-  ![DC Streaming](Image.Videos/DC.png)
+### DC Streaming
 
-- **Download Texture di Minecraft**: Texture pack per Minecraft.
+![DC Streaming](Image.Videos/DC.png)
 
-  ![Minecraft](Image.Videos/mc/mc.png)
+### Download Texture di Minecraft
+
+Texture pack per Minecraft.
+
+![Minecraft](Image.Videos/mc/mc.png)
 
 ## Social
 
@@ -35,8 +38,8 @@ Rufus è attivo su diverse piattaforme social, ecco alcuni link per seguirlo:
 
 ## Contatti
 
-Per qualsiasi domanda o collaborazione, puoi contattare Rufus via email: [alessiodeleonardis0212@gmail.com](https://mail.google.com/mail/u/0/#inbox?compose=new)
+Per qualsiasi domanda o collaborazione, puoi contattare Rufus via email: [alessiodeleonardis0212@gmail.com](mailto:alessiodeleonardis0212@gmail.com)
 
---- 
+---
 
 Questo sito è stato sviluppato interamente da Rufus con amore ❤️. Se ti piace il contenuto, non esitare a seguirmi sulle mie piattaforme social e a condividere con i tuoi amici!
