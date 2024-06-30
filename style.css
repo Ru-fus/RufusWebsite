@@ -255,3 +255,38 @@ h1, h2, h3, h4, h5, h6 {
 		transition: none;
 	}
 }
+
+
+
+.countdown-container {
+    text-align: center;
+    background: #af2b2b65;
+    color: #cccccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#countdown div {
+    background: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#countdown span {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 5px;
+}
