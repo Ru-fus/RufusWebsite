@@ -258,13 +258,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-
-
-
-
 .countdown-container {
     text-align: center;
-    background: #00000000;
+    background: #00000065;
     color: #cccccc;
     padding: 20px;
     border-radius: 10px;
@@ -293,4 +289,49 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     font-size: 36px;
     margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .countdown-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    #countdown {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    #countdown div {
+        width: 70px;
+        padding: 8px;
+        font-size: 18px;
+    }
+
+    #countdown span {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-container {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    #countdown {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    #countdown div {
+        width: 100%;
+        padding: 6px;
+        font-size: 16px;
+    }
+
+    #countdown span {
+        font-size: 24px;
+    }
 }
