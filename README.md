@@ -16,6 +16,10 @@ Texture pack per Minecraft.
 
 ![Minecraft](Image.Videos/mc/mc.png)
 
+### Link alla fanfiction su Lapidot
+
+![Wattpad](Image.Videos/Lapidot.png)
+
 ## Social
 
 Rufus è attivo su diverse piattaforme social, ecco alcuni link per seguirlo:
