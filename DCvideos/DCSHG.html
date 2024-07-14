@@ -11,9 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <a href="https://discord.com/users/658968248594989058">
-        <img class="discord-widget" src="https://discord.c99.nl/widget/theme-4/658968248594989058.png" alt="Discord">
-    </a>
+
+    <div class="text-overlay">
+    <center><a  href="https://discord.com/users/658968248594989058">
+        <img style="margin-top: 10px;" class="discord-widget" src="https://discord.c99.nl/widget/theme-4/658968248594989058.png" alt="Discord">
+    </a></center>
 
     <h1 style="margin-bottom: 7px;"><a class="b" href="https://ru-fus.github.io/RufusWebsite/index.html">PAGINA PRINCIPALE</a></h1>
 
@@ -121,12 +123,26 @@
                
 
     <h1 style="margin-bottom: 6px;">DOWNLOADS</h1>
-    <h2 style="margin-bottom: 6px;">Piccola sezione per chiunque volesse scaricare la serie</h2>
+    <h3 style="margin-bottom: 6px;">Piccola sezione per chiunque volesse scaricare la serie</h2>
     <h3><a class="a"  href="https://drive.google.com/file/d/13AJFijWHfoxvs_WtHVTda0LA0vulg3FQ/view?usp=sharing"> STAGIONE 1</a> <br>
     <a class="a" href="https://drive.google.com/file/d/1tJLn9GbEGwOPyJgqDNQ-Nz-lHvaNHBdD/view?usp=drive_link"> STAGIONE 2</a> <br>
     <a class="a" style="margin-bottom: 6px;" href="https://drive.google.com/file/d/19DQ7qIwbHHWmSgQfTp3h-aKQrYoQ3Kdi/view?usp=sharing"> FILM</a> <br>
     </h3>
+</div>
 
+    <script>
+        const backgrounds = [
+            'wallpapers/Metropolis.png',
+            'wallpapers/BurritoBucket.png',
+            'wallpapers/Lazarus.png',
+            'wallpapers/LexCorp.png',
+            'wallpapers/SweetJustice.png'
+        ];
+
+        const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+        document.body.style.backgroundImage = `url(${randomBackground})`;
+    </script>  
 
 </body>
 </html>
