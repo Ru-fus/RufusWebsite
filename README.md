@@ -10,15 +10,18 @@ In questa sezione vengono esposti i progetti realizzati da Rufus:
 
 ![DC Streaming](Image.Videos/DC.png)
 
+
+### Link alla fanfiction su Lapidot
+
+![Wattpad](Image.Videos/Lapidot.png)
+
+
 ### Download Texture di Minecraft
 
 Texture pack per Minecraft.
 
 ![Minecraft](Image.Videos/mc/mc.png)
 
-### Link alla fanfiction su Lapidot
-
-![Wattpad](Image.Videos/Lapidot.png)
 
 ## Social
 
