@@ -37,7 +37,7 @@ body {
     position: relative;
     text-align: left;
     text-decoration: none;
-    color: #cccccc;
+    color: #e0fbfc;
     letter-spacing: 1px;
     padding: 10px;
     display: inline-block;
@@ -58,13 +58,16 @@ body {
 .b {
     color: #ff5e00;
 }
+.b:hover{
+    color: #e0fbfc;
+}
 
 .c {
     color: #ff0000;
 }
 
 h1 {
-    color: #ffffff;
+    color: #e0fbfc;
     margin: 20px 0;
     text-align: center;
 }
@@ -122,3 +125,6 @@ iframe {
     border: 2px solid #cccccc;
     border-radius: 3px;
 }
+
+
+
