@@ -56,10 +56,25 @@ a:hover {
     margin: 0 auto;
 }
 
-.logo, .dc, .pfp .rufusimg {
+.logo, .dc, .rufusimg {
     max-width: 100%;
     height: auto;
+    border-radius: 9px;
 }
+
+
+
+.pfp {
+    width: 100%;
+    height: auto;
+    border-radius: 9px;
+    transition: transform 0.3s;
+}
+
+.pfp:hover {
+    transform: scale(1.03);
+}
+
 
 .rufusimg{
     width: 333px;
@@ -78,8 +93,20 @@ a:hover {
 }
 
 .mc {
-    width: 333px;
+    width: 500px;
+    transition: transform 0.3s;
 }
+
+.mcb {
+    width: 400px;
+
+}
+
+
+.mc:hover {
+    transform: scale(1.03);
+}
+
 
 .social-icons {
     display: flex;
@@ -376,7 +403,7 @@ main {
 }
 
 .project img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 footer {
@@ -426,3 +453,38 @@ footer a:hover {
         width: 100%;
     }
 }
+
+
+#minecraft-texture-page {
+    background-image: url('Image.Videos/MC/SfondoMC.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    position: relative; 
+    z-index: 1;
+}
+
+
+.text-overlay {
+    position: relative;
+    z-index: 2;
+}
+
+.text-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  #1e262bd2; 
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 10px; 
+}
+
