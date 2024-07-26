@@ -8,7 +8,81 @@
     <meta name="description" content="Download della Texture di Minecraft creata dal mitico Rufus">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font: normal 18px Arial;
+            background-color: #1e262b;
+            color: #cccccc;
+        }
 
+        #minecraft-texture-page {
+            background-image: url("Image.Videos/mc/sfondoMC.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 20px; /* Aggiungi padding per una migliore leggibilità su dispositivi mobili */
+        }
+
+        .text-overlay::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 38, 43, 0.9); /* Rendi l'overlay più opaco per migliorare il contrasto */
+            z-index: -1;
+            pointer-events: none;
+            border-radius: 10px;
+        }
+
+        /* Media queries per dispositivi mobili */
+        @media (max-width: 768px) {
+            #minecraft-texture-page {
+                background-attachment: scroll; /* Cambia l'attaccamento dello sfondo per migliorare la performance su dispositivi mobili */
+            }
+            
+            .mc, .mcb {
+                width: 80%;
+            }
+            
+            h1, h3, h5 {
+                font-size: 1.2rem; /* Regola la dimensione del testo per schermi più piccoli */
+            }
+            
+            .text-overlay {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mc, .mcb {
+                width: 100%;
+            }
+
+            h1, h3, h5 {
+                font-size: 1rem; /* Ulteriore riduzione della dimensione del testo per schermi molto piccoli */
+            }
+            
+            .text-overlay {
+                padding: 5px;
+            }
+        }
+
+
+    </style>
 </head>
 <div class="text-overlay">
 <body id="minecraft-texture-page">
