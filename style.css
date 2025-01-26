@@ -173,6 +173,7 @@ a:hover {
 	color: #7bb602;
 }
 
+
 h1,
 h2,
 h3,
@@ -476,7 +477,7 @@ footer a:hover {
 
 @media (max-width: 768px) {
     #minecraft-texture-page {
-        background-attachment: scroll; /* Cambia l'attaccamento dello sfondo per migliorare la performance su dispositivi mobili */
+        background-attachment: scroll; 
     }
 }
 
@@ -499,8 +500,10 @@ footer a:hover {
 	border-radius: 10px;
 }
 
-.centra {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+
+.c {
+    color: #ff0000;
 }
+
+
