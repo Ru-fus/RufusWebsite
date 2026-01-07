@@ -12,33 +12,21 @@
     <meta property="og:image:height" content="630">
     <link rel="stylesheet" href="style.css">
     <style>
-        .content {
-  max-width: 500px;
-  margin: auto;
-}
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .text-overlay {
-            padding: 20px;
-            margin: auto;
-        }
         .download-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
+            width: 100%;
         }
+        
         .download-wrapper {
-        width: 260px;  
-        height: 320px; 
-        position: relative;
-        overflow: hidden;
-        perspective: 1000px;
+            width: 260px;  
+            height: 320px; 
+            position: relative;
+            overflow: hidden;
+            perspective: 1000px;
         }
 
         .download-btn {
@@ -46,6 +34,7 @@
             width: 100%;
             height: 100%;
         }
+        
         .download-btn img {
             width: 100%;
             height: 100%;
@@ -55,100 +44,123 @@
             transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
             object-fit: contain;
         }
+        
         .download-btn .back {
-        transform: scale(1.1);
-        opacity: 0;
+            transform: scale(1.1);
+            opacity: 0;
         }
+        
         .download-wrapper:hover .download-btn .front {
             transform: scale(0.95);
             opacity: 0;
         }
+        
         .download-wrapper:hover .download-btn .back {
             transform: scale(1);
             opacity: 1;
         }
+        
+        .lcs {
+            width: 400px;
+            max-width: 88%;
+            height: auto;
+            border-radius: 12px;
+        }
+        
+        p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
         @media (max-width: 600px) {
             .download-container {
                 flex-direction: column;
                 align-items: center;
             }
+            
             .download-wrapper {
-                width: 140px;
-                height: 180px;
+                width: 200px;
+                height: 250px;
             }
         }
-        .lcs {
-            width: 400px;
-            height: relative;
-            position: relative;
-            border-radius: 12px;
-            max-width: 88%
-            
-        }
-        .p {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        
-
     </style>
 </head>
 <body>
-    <div class="text-overlay">
-
-        <center><h1><a style="margin-bottom: 20px;" class="b" href="index.html">PAGINA PRINCIPALE</a></h1></center>
-        <img class="btn" src="Image.Videos/LCS.png" alt="LoL Custom Skins">
-        
-
-
-
-        <center><h2 style="margin-bottom: 33px;">Guida per installare LoL Custom Skins</h2></center>
-        <p><b>Per prima cosa avete bisogno dell'ultima versione del programma:<a class="b" href="https://github.com/LeagueToolkit/cslol-manager/releases"> Lol Custom Skins</a> </b></p>
-        <img class="lcs" src="Image.Videos/LCS/csloldownload.png" alt="csloldownload">
-
-        <p>Windows: scarica il .exe   |   Mac: scarica il tar.xz</p>
-
-
-
-
-
-
-
-
-        <p>Dopo aver scaricato ed estratto, apri il programma e seleziona League Of Legends.exe in: </p><br>
-        <p class="a" style="margin-bottom: 20px;">  <i>Local Disk > Riot Games > League of Legends > Game > League of Legends</i></p> <br>
-
-        <img style="margin-bottom: 20px;" class="lcs" src="Image.Videos/LCS/lcsprofile.png" alt="">
-        <p style="margin-bottom: 50px;">Estrai e trascina le cartelle delle skin nel programma, abilita la spunta e premi il tasto Play.</p>
-        
-    <center><h1 class="c" >Noti importanti: </h1> </center>
-    <center><p>Solo tu vedrai le skin. <br>
-    Usa la skin base del campione per evitare problemi. <br>
-    Le custom skins sono generalmente sicure, ma usale a tuo rischio.</p></center>
-
-
-         <center><h1 style="margin-top: 50px;" >DOWNLOAD</h1></center>
-
-
-
-        <div class="download-container">
-            <div class="download-wrapper">
-                <a href="https://drive.google.com/file/d/1zoCQi7tLM66H0S_6NdYyHSlxJBCBRqhm/view?usp=sharing" download>
-                    <div class="download-btn">
-                        <img class="front" src="Image.Videos/LCS/Rell.png" alt="Download Rell skin">
-                        <img class="back" src="Image.Videos/LCS/Rell2.png" alt="Download Rell skin">
-                    </div>
-                </a>
+    <main>
+        <section class="intro">
+            <h1 style="margin-bottom: 30px;"><a class="b" href="index.html">PAGINA PRINCIPALE</a></h1>
+            
+            <div class="centra">
+                <img class="lcs" src="Image.Videos/LCS.png" alt="LoL Custom Skins">
             </div>
-            <div class="download-wrapper">
-                <a href="https://drive.google.com/file/d/1XlVRxEcIMKXJRlYVJW6MMf9K_tSb8Tum/view?usp=sharing" download>
-                    <div class="download-btn">
-                        <img class="front" src="Image.Videos/LCS/Draven.png" alt="Download Draven skin">
-                        <img class="back" src="Image.Videos/LCS/Draven2.png" alt="Download Draven2 skin">
-                    </div>
-                </a>
+
+            <div class="centra" style="margin-top: 20px;">
+                <h2 style="margin-bottom: 33px;">Guida per installare LoL Custom Skins</h2>
             </div>
-        </div>
-    </div>
+
+            <div class="centra">
+                <p><b>Per prima cosa avete bisogno dell'ultima versione del programma: 
+                    <a class="b" href="https://github.com/LeagueToolkit/cslol-manager/releases">Lol Custom Skins</a></b>
+                </p>
+            </div>
+
+            <div class="centra">
+                <img class="lcs" src="Image.Videos/LCS/csloldownload.png" alt="csloldownload">
+            </div>
+
+            <div class="centra">
+                <p>Windows: scarica il .exe | Mac: scarica il tar.xz</p>
+            </div>
+
+            <div class="centra">
+                <p>Dopo aver scaricato ed estratto, apri il programma e seleziona League Of Legends.exe in:</p>
+            </div>
+            
+            <div class="centra">
+                <p style="margin-bottom: 20px;"><i>Local Disk > Riot Games > League of Legends > Game > League of Legends</i></p>
+            </div>
+
+            <div class="centra">
+                <img style="margin-bottom: 20px;" class="lcs" src="Image.Videos/LCS/lcsprofile.png" alt="">
+            </div>
+
+            <div class="centra">
+                <p style="margin-bottom: 50px;">Estrai e trascina le cartelle delle skin nel programma, abilita la spunta e premi il tasto Play.</p>
+            </div>
+
+            <div class="centra">
+                <h1 class="c">Noti importanti:</h1>
+            </div>
+
+            <div class="centra">
+                <p>Solo tu vedrai le skin.<br>
+                Usa la skin base del campione per evitare problemi.<br>
+                Le custom skins sono generalmente sicure, ma usale a tuo rischio.</p>
+            </div>
+
+            <div class="centra" style="margin-top: 50px;">
+                <h1>DOWNLOAD</h1>
+            </div>
+
+            <div class="download-container">
+                <div class="download-wrapper">
+                    <a href="https://drive.google.com/file/d/1zoCQi7tLM66H0S_6NdYyHSlxJBCBRqhm/view?usp=sharing" download>
+                        <div class="download-btn">
+                            <img class="front" src="Image.Videos/LCS/Rell.png" alt="Download Rell skin">
+                            <img class="back" src="Image.Videos/LCS/Rell2.png" alt="Download Rell skin">
+                        </div>
+                    </a>
+                </div>
+                <div class="download-wrapper">
+                    <a href="https://drive.google.com/file/d/1XlVRxEcIMKXJRlYVJW6MMf9K_tSb8Tum/view?usp=sharing" download>
+                        <div class="download-btn">
+                            <img class="front" src="Image.Videos/LCS/Draven.png" alt="Download Draven skin">
+                            <img class="back" src="Image.Videos/LCS/Draven2.png" alt="Download Draven2 skin">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
