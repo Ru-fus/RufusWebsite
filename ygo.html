@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#10151c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>YGO Life Counter</title>
+  <meta content="Fully vibecoded YuGiOh! LifeCounter by Rufus" property="og:description"/>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10151c;
+      --surface: #1a222c;
+      --surface-raised: #202a36;
+      --line: #303c49;
+      --text: #edf1f5;
+      --muted: #8d9baa;
+      --blue: #8bb9df;
+      --blue-soft: rgba(139, 185, 223, .12);
+      --green: #8bc8ae;
+      --green-soft: rgba(139, 200, 174, .12);
+      --red: #df9297;
+      --gold: #d6b875;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--bg); overscroll-behavior: none; }
+    body { color: var(--text); user-select: none; }
+    button, input { font: inherit; }
+    button { color: inherit; border: 0; cursor: pointer; touch-action: manipulation; }
+    button:focus-visible, input:focus-visible, [role="button"]:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+    .app {
+      width: 100%;
+      max-width: 760px;
+      height: 100dvh;
+      min-height: 100%;
+      margin: 0 auto;
+      padding: calc(8px + var(--safe-top)) 10px calc(8px + var(--safe-bottom));
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .topline {
+      height: 25px;
+      flex: 0 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+    }
+    .brand { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 850; letter-spacing: .13em; }
+    .brand-mark { width: 16px; height: 16px; border: 1.5px solid #9ba9b8; border-radius: 4px; position: relative; }
+    .brand-mark::after { content: ""; position: absolute; width: 5px; height: 5px; left: 4px; top: 4px; background: #9ba9b8; border-radius: 1px; }
+    .top-meta { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .11em; }
+    .fullscreen-btn {
+      width: 30px; height: 25px; display: grid; place-items: center;
+      border: 1px solid var(--line); border-radius: 6px;
+      background: transparent; color: var(--muted);
+    }
+    .fullscreen-btn:active { background: var(--surface-raised); color: var(--text); }
+    .fullscreen-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .duel-board { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; }
+    .player-panel {
+      --accent: var(--green);
+      --accent-soft: var(--green-soft);
+      min-height: 0;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 13px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-top: 2px solid rgba(139, 200, 174, .7);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(0, 0, 0, .16);
+    }
+    .player-panel.opponent {
+      --accent: var(--blue);
+      --accent-soft: var(--blue-soft);
+      border-top-color: rgba(139, 185, 223, .75);
+      transform: rotate(180deg);
+    }
+    .score-wrap { flex: 1; min-height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .life-total {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      max-width: 100%;
+      padding: 0 4px;
+      color: #f4f6f8;
+      font-size: clamp(52px, 10vh, 82px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.065em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      cursor: default;
+    }
+    .life-main, .life-tail { font-size: 1em; font-weight: 800; letter-spacing: inherit; color: inherit; }
+    .life-sign { font-size: .76em; letter-spacing: -.04em; }
+    .score-sub { min-height: 11px; color: var(--gold); font-size: 8px; font-weight: 750; letter-spacing: .08em; }
+    .batch-summary {
+      min-height: 18px;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px 10px;
+      border-radius: 5px;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      opacity: 0;
+      transition: opacity .12s ease, background .12s ease;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .batch-summary.visible { opacity: 1; background: rgba(255,255,255,.055); }
+    .batch-total { color: var(--text); font-weight: 850; }
+    .batch-total.damage { color: var(--red); }
+    .batch-total.heal { color: var(--green); }
+
+    .quick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; direction: ltr; }
+    .quick-btn { direction: ltr;
+      height: clamp(42px, 6vh, 54px);
+      border: 1px solid #35414e;
+      border-radius: 8px;
+      background: var(--surface-raised);
+      font-size: clamp(15px, 3vw, 18px);
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      transition: background .1s ease, border-color .1s ease, transform .1s ease;
+    }
+    .quick-btn.damage { color: #e6a0a3; }
+    .quick-btn.heal { color: #9bd3b9; }
+    .quick-btn:active { transform: scale(.97); background: #2b3744; }
+    .quick-btn.damage:active { border-color: #b9767c; }
+    .quick-btn.heal:active { border-color: #6ca98c; }
+    .utility-dock { flex: 0 0 auto; padding: 7px 8px 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .status-row { height: 30px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+    .timer-display {
+      min-width: 75px;
+      padding: 3px 12px;
+      border-radius: 6px;
+      background: transparent;
+      color: #c8d2dc;
+      font-size: 13px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .06em;
+    }
+    .timer-display.running { color: var(--green); }
+    .heal-toggle {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 25px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0 8px;
+      border: 1px solid #35414e;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+    .heal-toggle-mark { width: 13px; height: 13px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 11px; line-height: 1; }
+    .heal-toggle.active { border-color: #6ca98c; background: var(--green-soft); color: var(--green); }
+    .tool-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+    .tool-btn {
+      height: 43px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      border: 1px solid #303c49;
+      border-radius: 8px;
+      background: #202a35;
+      color: #c1ccd6;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+    .tool-btn:active { background: #2b3744; }
+    .tool-btn:disabled { opacity: .35; cursor: default; }
+    .tool-icon { width: 16px; height: 16px; display: grid; place-items: center; color: #d4dde5; }
+    .tool-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+    .modal-backdrop { position: fixed; z-index: 20; inset: 0; display: none; align-items: center; justify-content: center; padding: 18px; background: rgba(5, 9, 13, .78); backdrop-filter: blur(7px); }
+    .modal-backdrop.open { display: flex; }
+    .modal { width: min(100%, 390px); max-height: min(88dvh, 680px); overflow: auto; padding: 19px; border: 1px solid #3a4653; border-radius: 15px; background: #1a232d; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+    .modal-title { font-size: 13px; font-weight: 850; letter-spacing: .07em; }
+    .close-btn { width: 31px; height: 31px; border-radius: 7px; background: #2a3541; color: #cbd4dc; font-size: 19px; }
+    .field-label { display: block; margin: 12px 0 7px; color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .amount-input { width: 100%; height: 53px; border: 1px solid #3b4856; border-radius: 8px; background: #111820; color: #fff; text-align: center; font-size: 24px; font-weight: 800; outline: none; user-select: text; }
+    .mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 10px; }
+    .mode-btn { height: 40px; border: 1px solid #394552; border-radius: 8px; background: #202a35; color: #aebbc7; font-size: 10px; font-weight: 800; letter-spacing: .07em; }
+    .mode-btn.selected.damage-mode { border-color: #b9767c; background: rgba(223,146,151,.12); color: #e6a0a3; }
+    .mode-btn.selected.heal-mode { border-color: #6ca98c; background: rgba(139,200,174,.12); color: #9bd3b9; }
+    .primary-btn { width: 100%; height: 45px; margin-top: 14px; border-radius: 8px; background: #d7e0e8; color: #17212b; font-size: 10px; font-weight: 900; letter-spacing: .1em; }
+    .secondary-btn { width: 100%; height: 40px; margin-top: 8px; border-radius: 8px; background: #2a3541; color: #c7d1da; font-size: 10px; font-weight: 800; letter-spacing: .07em; }
+    .modal-note { margin-top: 10px; color: #8795a3; font-size: 10px; line-height: 1.45; text-align: center; }
+    .log-list { display: flex; flex-direction: column; gap: 5px; max-height: 52dvh; overflow: auto; }
+    .log-entry { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 11px; border-radius: 7px; background: rgba(255,255,255,.045); font-size: 11px; }
+    .log-entry span:last-child { color: #92a0ae; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .empty-log { padding: 24px 8px; color: #8795a3; font-size: 11px; text-align: center; }
+    .winner-title { margin-top: 4px; color: var(--gold); font-size: 10px; font-weight: 850; letter-spacing: .12em; text-align: center; }
+    .winner-name { margin-top: 8px; font-size: 24px; font-weight: 850; text-align: center; }
+    .winner-sub { margin-top: 6px; color: var(--muted); font-size: 10px; text-align: center; }
+    .toast { position: fixed; z-index: 30; left: 50%; bottom: calc(17px + var(--safe-bottom)); transform: translate(-50%, 14px); opacity: 0; pointer-events: none; padding: 9px 13px; border: 1px solid #45515d; border-radius: 7px; background: #e5ebf0; color: #17212b; font-size: 10px; font-weight: 800; box-shadow: 0 6px 20px rgba(0,0,0,.28); transition: opacity .15s ease, transform .15s ease; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-height: 700px) and (orientation: portrait) {
+      .app { gap: 5px; padding-top: calc(4px + var(--safe-top)); padding-bottom: calc(4px + var(--safe-bottom)); }
+      .topline { height: 21px; flex-basis: 21px; }
+      .duel-board { gap: 5px; }
+      .player-panel { gap: 5px; padding: 8px 10px; }
+      .life-total { font-size: clamp(42px, 8.5vh, 62px); }
+      .quick-btn { height: 38px; }
+      .utility-dock { padding: 5px 6px 6px; }
+      .status-row { height: 24px; margin-bottom: 3px; }
+      .heal-toggle { height: 22px; font-size: 7px; }
+      .tool-btn { height: 39px; }
+    }
+
+    @media (orientation: landscape) {
+      .app { width: 100%; max-width: none; padding: calc(4px + var(--safe-top)) 12px calc(4px + var(--safe-bottom)); gap: 5px; }
+      .topline { height: 19px; flex-basis: 19px; }
+      .brand { font-size: 10px; }
+      .brand-mark { width: 13px; height: 13px; }
+      .brand-mark::after { left: 3px; top: 3px; width: 4px; height: 4px; }
+      .top-meta { font-size: 8px; }
+      .duel-board { flex-direction: column; gap: 5px; }
+      .player-panel { gap: 3px; padding: 5px 10px; border-radius: 10px; }
+      .score-wrap { min-height: 0; gap: 0; }
+      .life-total { font-size: clamp(34px, 7.2vh, 50px); }
+      .score-sub { min-height: 8px; font-size: 6px; }
+      .batch-summary { min-height: 12px; padding: 0 5px; font-size: 8px; }
+      .quick-grid { gap: 5px; }
+      .quick-btn { height: clamp(29px, 5vh, 37px); border-radius: 6px; font-size: 13px; }
+      .utility-dock { padding: 3px 7px 4px; border-radius: 9px; }
+      .status-row { height: 20px; margin-bottom: 2px; }
+      .timer-display { font-size: 10px; }
+      .heal-toggle { height: 18px; padding: 0 6px; font-size: 6px; }
+      .heal-toggle-mark { width: 10px; height: 10px; font-size: 9px; }
+      .tool-row { gap: 4px; }
+      .tool-btn { height: 26px; flex-direction: row; gap: 5px; border-radius: 6px; font-size: 7px; }
+      .tool-icon, .tool-icon svg { width: 13px; height: 13px; }
+    }
+
+    @media (orientation: landscape) and (max-height: 380px) {
+      .app { gap: 3px; }
+      .duel-board { gap: 3px; }
+      .player-panel { padding-top: 2px; padding-bottom: 2px; }
+      .life-total { font-size: clamp(29px, 6.4vh, 40px); }
+      .quick-btn { height: 25px; }
+      .tool-btn { height: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topline">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>DUEL</span></div>
+      <button class="fullscreen-btn" id="fullscreen-btn" type="button" aria-label="Attiva schermo intero" title="Schermo intero">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg>
+      </button>
+    </header>
+
+    <main class="duel-board" aria-label="Contatore punti vita">
+      <section class="player-panel opponent" id="panel-1" aria-label="Giocatore superiore">
+        <div class="score-wrap">
+          <div class="life-total" id="lp-1" aria-label="8000 punti vita">8000</div>
+          <div class="score-sub" id="sub-1" aria-live="polite"></div>
+          <div class="batch-summary" id="batch-1" aria-live="polite"></div>
+        </div>
+        <div class="quick-grid" data-player="1">
+          <button class="quick-btn damage" data-amount="100" aria-label="Togli 100 punti vita">−100</button>
+          <button class="quick-btn damage" data-amount="1000" aria-label="Togli 1000 punti vita">−1000</button>
+        </div>
+      </section>
+
+      <section class="player-panel" id="panel-0" aria-label="Giocatore inferiore">
+        <div class="score-wrap">
+          <div class="life-total" id="lp-0" aria-label="8000 punti vita">8000</div>
+          <div class="score-sub" id="sub-0" aria-live="polite"></div>
+          <div class="batch-summary" id="batch-0" aria-live="polite"></div>
+        </div>
+        <div class="quick-grid" data-player="0">
+          <button class="quick-btn damage" data-amount="100" aria-label="Togli 100 punti vita">−100</button>
+          <button class="quick-btn damage" data-amount="1000" aria-label="Togli 1000 punti vita">−1000</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="utility-dock">
+      <div class="status-row">
+        <button class="timer-display" id="timer-btn" aria-label="Avvia o metti in pausa il cronometro">00:00</button>
+        <button class="heal-toggle" id="heal-toggle" type="button" aria-pressed="false" aria-label="Abilita il recupero dei punti vita">
+          <span class="heal-toggle-mark" aria-hidden="true">+</span><span>RECUPERO</span>
+        </button>
+      </div>
+      <div class="tool-row">
+        <button class="tool-btn" id="undo-btn" disabled>
+          <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"></path><path d="M4 9h10a6 6 0 0 1 0 12h-2"></path></svg></span>ANNULLA
+        </button>
+        <button class="tool-btn" id="timer-reset-btn">
+          <span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l3 2M9 2h6M12 2v3"></path></svg></span>RESET TIMER
+        </button>
+        <button class="tool-btn" id="log-btn">
+          <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M8 5h12M8 12h12M8 19h12M3 5h.01M3 12h.01M3 19h.01" stroke-width="2.5"></path></svg></span>REGISTRO
+        </button>
+        <button class="tool-btn" id="reset-btn">
+          <span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"></path><path d="M5.6 9a7 7 0 0 1 11.6-2L20 12M4 12l2.8 5a7 7 0 0 0 11.6-2"></path></svg></span>RESET LP
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head"><div class="modal-title" id="modal-title">Modifica LP</div><button class="close-btn" id="modal-close" aria-label="Chiudi">×</button></div>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const STORAGE_KEY = 'duel-life-counter-v1';
+      const BATCH_DELAY = 1250;
+      const $ = id => document.getElementById(id);
+      const state = {
+        players: [{ lp: 8000 }, { lp: 8000 }],
+        seconds: 0,
+        timerRunning: false,
+        undo: [],
+        logEntries: [[], []],
+        batches: [null, null],
+        healMode: false
+      };
+
+      let toastTimeout;
+      let timerInterval = null;
+      const batchTimeouts = [null, null];
+
+      function playerLabel(index) { return index === 1 ? 'Giocatore superiore' : 'Giocatore inferiore'; }
+      function escapeHTML(value) {
+        return String(value).replace(/[&<>\"']/g, char => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;'
+        })[char]);
+      }
+      function formatLP(value) { return Math.trunc(value).toLocaleString('it-IT'); }
+      function signedLP(value) { return value === 0 ? '0' : `${value < 0 ? '−' : '+'}${formatLP(Math.abs(value))}`; }
+
+      function scoreHTML(value) {
+        const raw = String(Math.trunc(value));
+        const negative = raw.startsWith('-');
+        const digits = negative ? raw.slice(1) : raw;
+        return `${negative ? '<span class="life-sign">−</span>' : ''}<span class="life-main">${digits}</span>`;
+      }
+
+      function formatTime(total) {
+        const minutes = Math.floor(total / 60).toString().padStart(2, '0');
+        const seconds = (total % 60).toString().padStart(2, '0');
+        return `${minutes}:${seconds}`;
+      }
+
+      function save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            players: state.players,
+            seconds: state.seconds,
+            timerRunning: state.timerRunning,
+            undo: state.undo.slice(-30),
+            logEntries: state.logEntries
+          }));
+        } catch (_) {
+          // Il contatore continua a funzionare anche senza localStorage.
+        }
+      }
+
+      function load() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+          if (!saved || !Array.isArray(saved.players) || saved.players.length !== 2) return;
+          state.players = saved.players.map(player => ({
+            lp: Number.isFinite(Number(player.lp)) ? Math.trunc(Number(player.lp)) : 8000
+          }));
+          state.seconds = Math.max(0, Math.trunc(saved.seconds || 0));
+          // Il cronometro riparte solo dopo un tocco esplicito.
+          state.timerRunning = false;
+          state.undo = Array.isArray(saved.undo) ? saved.undo.slice(-30).map(entry => {
+            const players = Array.isArray(entry) ? entry : (Array.isArray(entry && entry.players) ? entry.players : null);
+            if (!players) return null;
+            return {
+              players: players.map(player => ({ lp: Math.trunc(Number(player.lp) || 0) })),
+              logEntries: Array.isArray(entry && entry.logEntries) ? entry.logEntries.map(list => Array.isArray(list) ? list.map(item => ({ total: Math.trunc(Number(item.total) || 0), time: Number(item.time) || 0 })) : []) : [[], []]
+            };
+          }).filter(Boolean) : [];
+          state.logEntries = Array.isArray(saved.logEntries) && saved.logEntries.length === 2
+            ? saved.logEntries.map(list => Array.isArray(list) ? list : []) : [[], []];
+        } catch (_) {
+          // Dati salvati non validi: si parte da una partita nuova.
+        }
+      }
+
+      function snapshot() {
+        return {
+          players: state.players.map(player => ({ lp: player.lp })),
+          logEntries: state.logEntries.map(list => list.map(item => ({ ...item })))
+        };
+      }
+
+
+      function renderBatch(player) {
+        const element = $('batch-' + player);
+        const batch = state.batches[player];
+        if (!batch || batch.values.length === 0) {
+          element.innerHTML = '';
+          element.classList.remove('visible');
+          return;
+        }
+
+        const total = batch.total;
+        const kind = total < 0 ? 'damage' : total > 0 ? 'heal' : '';
+        element.innerHTML = `<span class="batch-total ${kind}">${signedLP(total)}</span>`;
+        element.classList.add('visible');
+      }
+
+      function render() {
+        state.players.forEach((player, index) => {
+          $('lp-' + index).innerHTML = scoreHTML(player.lp);
+          $('lp-' + index).setAttribute('aria-label', `${formatLP(player.lp)} punti vita`);
+          const warning = player.lp <= 0 ? 'LP ESAURITI' : player.lp < 2000 ? 'POCHI LP' : '';
+          $('sub-' + index).textContent = warning;
+          $('sub-' + index).style.color = player.lp <= 0 ? '#e6a0a3' : '';
+          renderBatch(index);
+        });
+        $('timer-btn').textContent = formatTime(state.seconds);
+        $('timer-btn').classList.toggle('running', state.timerRunning);
+        $('undo-btn').disabled = state.undo.length === 0;
+        $('heal-toggle').classList.toggle('active', state.healMode);
+        $('heal-toggle').setAttribute('aria-pressed', String(state.healMode));
+        $('heal-toggle').setAttribute('aria-label', state.healMode ? 'Disabilita il recupero dei punti vita' : 'Abilita il recupero dei punti vita');
+        document.querySelectorAll('.quick-grid').forEach(grid => {
+          grid.querySelectorAll('[data-amount]').forEach(button => {
+            const amount = Number(button.dataset.amount);
+            button.textContent = `${state.healMode ? '+' : '−'}${formatLP(amount)}`;
+            button.classList.toggle('heal', state.healMode);
+            button.classList.toggle('damage', !state.healMode);
+            button.setAttribute('aria-label', `${state.healMode ? 'Aggiungi' : 'Togli'} ${formatLP(amount)} punti vita`);
+          });
+        });
+      }
+
+      function showToast(message) {
+        const element = $('toast');
+        element.textContent = message;
+        element.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => element.classList.remove('show'), 1400);
+      }
+
+      function openModal(title, html) {
+        $('modal-title').textContent = title;
+        $('modal-content').innerHTML = html;
+        $('modal-backdrop').classList.add('open');
+        $('modal-backdrop').setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        $('modal-backdrop').classList.remove('open');
+        $('modal-backdrop').setAttribute('aria-hidden', 'true');
+      }
+
+      function clearBatch(player) {
+        if (batchTimeouts[player]) clearTimeout(batchTimeouts[player]);
+        batchTimeouts[player] = null;
+        state.batches[player] = null;
+        renderBatch(player);
+      }
+
+      function clearBatches() {
+        clearBatch(0);
+        clearBatch(1);
+      }
+
+      function addToBatch(player, delta) {
+        if (batchTimeouts[player]) clearTimeout(batchTimeouts[player]);
+        if (!state.batches[player]) state.batches[player] = { values: [], total: 0 };
+        const batch = state.batches[player];
+        batch.values.push(Math.trunc(delta));
+        batch.total += Math.trunc(delta);
+        renderBatch(player);
+        batchTimeouts[player] = setTimeout(() => clearBatch(player), BATCH_DELAY);
+      }
+
+      function applyDelta(player, delta) {
+        if (!Number.isFinite(delta) || delta === 0) return;
+        const amount = Math.trunc(delta);
+        state.undo.push(snapshot());
+        state.undo = state.undo.slice(-30);
+        state.players[player].lp += amount;
+        const now = Date.now();
+        const entries = state.logEntries[player];
+        const last = entries[entries.length - 1];
+        if (last && now - last.time <= BATCH_DELAY) {
+          last.total += amount;
+          last.time = now;
+        } else {
+          entries.push({ total: amount, time: now });
+        }
+        addToBatch(player, amount);
+        save();
+        render();
+      }
+
+      function undo() {
+        const previous = state.undo.pop();
+        if (!previous) return;
+        const previousPlayers = Array.isArray(previous) ? previous : previous.players;
+        state.players = previousPlayers.map(player => ({ lp: player.lp }));
+        if (!Array.isArray(previous)) state.logEntries = previous.logEntries.map(list => list.map(item => ({ ...item })));
+        clearBatches();
+        save();
+        render();
+        showToast('Modifica annullata');
+      }
+
+      function resetLifePoints() {
+        state.undo.push(snapshot());
+        state.undo = state.undo.slice(-30);
+        state.players.forEach(player => { player.lp = 8000; });
+        clearBatches();
+        state.healMode = false;
+        closeModal();
+        save();
+        render();
+        showToast('Life Points reimpostati a 8000');
+      }
+
+      function showLog() {
+        const entries = state.logEntries.map((list, index) => {
+          const label = index === 0 ? 'Giocatore inferiore' : 'Giocatore superiore';
+          const rows = list.map(item => `<div class="log-entry"><span>${label}</span><span>${signedLP(item.total)} LP</span></div>`).join('');
+          return rows || `<div class="log-entry"><span>${label}</span><span>—</span></div>`;
+        }).join('');
+        openModal('Registro', `
+          <div class="log-list">${entries}</div>
+          <button class="secondary-btn" id="clear-log">AZZERA REGISTRO</button>`);
+        $('clear-log').addEventListener('click', () => {
+          state.logEntries = [[], []];
+          save();
+          showLog();
+        });
+      }
+
+      function stopTimerInterval() {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      }
+
+      function setTimer(running) {
+        state.timerRunning = running;
+        stopTimerInterval();
+        if (running) {
+          timerInterval = setInterval(() => {
+            state.seconds += 1;
+            $('timer-btn').textContent = formatTime(state.seconds);
+            save();
+          }, 1000);
+        }
+        render();
+        save();
+      }
+
+      document.querySelectorAll('.quick-grid').forEach(grid => {
+        grid.addEventListener('click', event => {
+          const button = event.target.closest('[data-amount]');
+          if (!button) return;
+          const amount = Number(button.dataset.amount);
+          applyDelta(Number(grid.dataset.player), state.healMode ? amount : -amount);
+        });
+      });
+
+      $('heal-toggle').addEventListener('click', () => {
+        state.healMode = !state.healMode;
+        render();
+      });
+
+      $('undo-btn').addEventListener('click', undo);
+      $('timer-btn').addEventListener('click', () => setTimer(!state.timerRunning));
+      $('fullscreen-btn').addEventListener('click', async () => {
+        try {
+          if (document.fullscreenElement) {
+            await document.exitFullscreen();
+          } else if (document.documentElement.requestFullscreen) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            showToast('Schermo intero non supportato da questo browser');
+          }
+        } catch (error) {
+          showToast('Schermo intero non disponibile in questo browser');
+        }
+      });
+      document.addEventListener('fullscreenchange', () => {
+        const active = Boolean(document.fullscreenElement);
+        $('fullscreen-btn').setAttribute('aria-label', active ? 'Esci da schermo intero' : 'Attiva schermo intero');
+        $('fullscreen-btn').title = active ? 'Esci da schermo intero' : 'Schermo intero';
+      });
+      $('timer-reset-btn').addEventListener('click', () => {
+        state.seconds = 0;
+        setTimer(false);
+        showToast('Cronometro azzerato');
+      });
+      $('log-btn').addEventListener('click', showLog);
+      $('reset-btn').addEventListener('click', resetLifePoints);
+      $('modal-close').addEventListener('click', closeModal);
+      $('modal-backdrop').addEventListener('click', event => {
+        if (event.target === $('modal-backdrop')) closeModal();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeModal();
+      });
+
+      load();
+      render();
+    })();
+  </script>
+</body>
+</html>
