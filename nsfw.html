@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <!-- Keep: this is what stops IE9 falling back into compatibility mode. -->
+  <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="Come on, shake your body baby." name="description"/>
+  <meta content="@martinez" name="twitter:site"/>
+  <meta content="@martinez" name="twitter:creator"/>
+  <meta content="summary" name="twitter:card"/>
+  <meta content="?" property="og:title"/>
+  <meta content="Come on, shake your body baby." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https\://matias.me/nsfw" property="og:url"/>
+  <!-- No og:image: there is no artwork to point at and none should be invented. Follow-up. -->
+  <!-- Empty data URI, so every load stops asking for a favicon that isn't there. -->
+  <link href="data:," rel="icon"/>
+  <title>
+   ?
+  </title>
+  <style>
+   html,body,span,button,canvas,audio,embed{
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+  border:0;
+  margin:0;
+  padding:0}
+  body{
+    line-height:1}
+    html{
+      width:100%;
+      display:table}
+      body{
+        vertical-align:middle;
+        text-align:center;
+        -webkit-font-smoothing:antialiased;
+        color:#444;
+        -webkit-perspective:1000px;
+        perspective:1000px;
+        background-color:#000;
+        font-family:sans-serif;
+        font-size:24px;
+        font-weight:600;
+        display:table-cell}
+        html,body{
+          width:100%;
+          height:100%;
+          overflow:hidden}
+          canvas{
+            image-rendering:auto;
+            image-rendering:crisp-edges;
+            image-rendering:pixelated}
+            button{
+              font:inherit;
+              -webkit-appearance:none;
+              -moz-appearance:none;
+              -ms-appearance:none;
+              appearance:none;
+              color:#000;
+              text-shadow:0 1px 2px rgba(255,255,255,.15);
+              cursor:pointer;
+              background-color:#ad68d9;
+              background-image:-webkit-gradient(linear,0 0,0 100%,from(#ad68d9),to(#a960d7));
+              background-image:-webkit-linear-gradient(270deg,#ad68d9 0%,#a960d7 100%);
+              -o-transition:all .15s ease-out;
+              background-image:linear-gradient(#ad68d9 0%,#a960d7 100%);
+              border:none;
+              -webkit-border-radius:8px;
+              -moz-border-radius:8px;
+              border-radius:8px;
+              outline:none;
+              padding:8px 16px;
+              -webkit-transition:all .15s ease-out;
+              -o-transition:all .15s ease-out;
+              transition:all .15s ease-out;
+              -webkit-box-shadow:inset 0 0 2px rgba(255,255,255,.15);
+              -moz-box-shadow:inset 0 0 2px rgba(255,255,255,.15);
+              box-shadow:inset 0 0 2px rgba(255,255,255,.15)}
+              button:hover{
+                background-image:-webkit-gradient(linear,0 0,0 100%,from(#c391e3),to(#bf89e1));
+                background-image:-webkit-linear-gradient(270deg,#c391e3 0%,#bf89e1 100%);
+                background-image:linear-gradient(#c391e3 0%,#bf89e1 100%);
+                -webkit-transform:scale(1.05);
+                -moz-transform:scale(1.05);
+                -ms-transform:scale(1.05);
+                -o-transform:scale(1.05);
+                transform:scale(1.05)}
+                button:active{
+                  opacity:.5;
+                  -webkit-transform:scale(.95);
+                  -moz-transform:scale(.95);
+                  -ms-transform:scale(.95);
+                  -o-transform:scale(.95);
+                  transform:scale(.95)}
+                  audio{
+                    visibility:hidden;
+                    width:0;
+                    height:0;
+                    position:absolute}
+                    @-webkit-keyframes Cue-In{
+                      0%{
+                        opacity:0;
+                        -webkit-transform:scale(.1)rotateX(45deg);
+                        -moz-transform:scale(.1)rotateX(45deg);
+                        -ms-transform:scale(.1)rotateX(45deg);
+                        -o-transform:scale(.1)rotateX(45deg);
+                        transform:scale(.1)rotateX(45deg)}
+                        to{
+                          -webkit-transform:scale(1)rotateX(0);
+                          -moz-transform:scale(1)rotateX(0);
+                          -ms-transform:scale(1)rotateX(0);
+                          -o-transform:scale(1)rotateX(0);
+                          transform:scale(1)rotateX(0)}
+                        }
+                        @keyframes Cue-In{
+                          0%{
+                            opacity:0;
+                            -webkit-transform:scale(.1)rotateX(45deg);
+                            -moz-transform:scale(.1)rotateX(45deg);
+                            -ms-transform:scale(.1)rotateX(45deg);
+                            -o-transform:scale(.1)rotateX(45deg);
+                            transform:scale(.1)rotateX(45deg)}
+                            to{
+                              -webkit-transform:scale(1)rotateX(0);
+                              -moz-transform:scale(1)rotateX(0);
+                              -ms-transform:scale(1)rotateX(0);
+                              -o-transform:scale(1)rotateX(0);
+                              transform:scale(1)rotateX(0)}
+                            }
+                            .cue-in{
+                              -webkit-animation:2s ease-in-out Cue-In;
+                              animation:2s ease-in-out Cue-In}
+  </style>
+ </head>
+ <body>
+  <audio controls="controls" loop="" preload="auto">
+   <source src="Image.Videos/konga.mp3" type="audio/mp3"/>
+   <!-- Dead for IE9+, kept deliberately: in pre-<audio> browsers this blasts the
+
+           music with no click at all, which is the behaviour being imitated. -->
+   <embed loop="true" src="Image.Videos/konga.mp3"/>
+  </audio>
+  <script>
+   !function(){function t(t,e){return Math.floor(Math.random()*(e-t+1))+t}function e(){return"#"+("00000"+Math.floor(16777215*Math.random()).toString(16)).slice(-6)}function i(t,e){var i=t.width,n=t.height,o=document.createElement("canvas");o.width=i,o.height=n;var h=o.getContext("2d");h.drawImage(t,0,0),this.canvas=o,this.context=h,this.frames=e}CanvasRenderingContext2D.prototype.roundedRect=function(t,e,i,n,o){return i<2*o&&(o=i/2),n<2*o&&(o=n/2),this.beginPath(),this.moveTo(t+o,e),this.arcTo(t+i,e,t+i,e+n,o),this.arcTo(t+i,e+n,t,e+n,o),this.arcTo(t,e+n,t,e,o),this.arcTo(t,e,t+i,e,o),this.closePath(),this},i.prototype.drawFrame=function(t,e,i,n,o,h){var a=this.frames[e],r=a.x,s=a.y,d=a.width,l=a.height;i|=0,n|=0,void 0===o&&(o=d),void 0===h&&(h=l),t.drawImage(this.canvas,r,s,d,l,i,n,o,h)},i.GeometryHorizontalLinear=function(t,e,i){for(var n=[],o=0;o<i;o+=1){var h={x:t*o,y:0,width:t,height:e};n.push(h)}return n};var n,o=(n=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame)?function(t){return n.call(window,function(e){t("number"==typeof e&&isFinite(e)?e:Date.now())})}:function(t){return setTimeout(function(){t(Date.now())},16)};function h(){this.lastTime=null,this.elapsedTime=0,this.element=document.createElement("canvas"),this.context=this.element.getContext("2d"),this.size={width:1,height:1};var t=this;this.boundStep=function(e){t.step(e)}}function a(){h.call(this),this.backgroundColor="#000",this.containerColor="#000",this.entities=[];var t=this,e=new Image;e.onload=function(){var n=33,o=29,h=new i(e,i.GeometryHorizontalLinear(n,o,4));t.sprites={ditto:h},t.main()},e.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAAAdAgMAAAAWQyy/AAAADFBMVEX///+4YOA4ODj4+PhASPNeAAAAAXRSTlMAQObYZgAAAStJREFUeF6l08FqhEAMBuBhbk6fYyj6Pgmul3pZEN9hWV8i9FgvC3X6PELpe2zP9Y/pyCLLFprLoP83STzo/lv+/ZEoGGwMw10RacmePmML4PfOjyqev6WGKDs/Kth40QiEXInxLPzxle+WHUS8kgoi6vU8zzaobIQB31R4QrU4T9RVKl5ngpheaBP1KlmWLlU4z0iCJioORKxCmzm5nDSJAOx0jxthdEBwzOLIkJyFIEGgQpvVqxSMhVRxQKCiEYhozQtbPV/Fmx6iJE5ErYkWgi8mlOYkEiVZxQRpglUojSZB9wJUTDoxkTeMN4J3ot0JT79CTMifRUmUEtV5803EJcD3+5ScS+MmML+feHBhCcKSWOVvw9s07H+LTdwvL/1Fp9yvaggJUx/WD0e0wREEScedAAAAAElFTkSuQmCC"}function r(t){this.container=t;var e=this,i=new a;i.element.style.display="none",t.appendChild(i.element),window.addEventListener("resize",function(){e.handleResize()}),this.scene=i,this.handleResize();var n=document.createElement("span");function o(){n.parentNode&&n.parentNode.removeChild(n)}function h(){s||(o(),d.parentNode||t.appendChild(d))}n.textContent="Preparing…";var r=document.getElementsByTagName("audio")[0],s=!1;r.addEventListener("error",h),r.addEventListener("abort",h),r.addEventListener("playing",function(){s||(s=!0,o(),i.element.className+=(i.element.className?" ":"")+"cue-in",i.element.style.display="block",document.title="Conga!")});var d=document.createElement("button");d.textContent="Trust me",d.addEventListener("click",function(e){d.parentNode&&d.parentNode.removeChild(d),t.appendChild(n);var i=r.play();i&&i.catch&&i.catch(h)}),t.appendChild(d)}h.prototype.main=function(){this.lastTime=null,o(this.boundStep)},h.prototype.step=function(t){if(null===this.lastTime)return this.lastTime=t,void o(this.boundStep);var e=(t-this.lastTime)/1e3;if(!isFinite(e))return this.lastTime=null,void o(this.boundStep);this.lastTime=t,e>.1?e=.1:e<0&&(e=0),this.update(e),this.render(),o(this.boundStep)},h.prototype.update=function(t){},h.prototype.render=function(){},h.prototype.sizeDidChange=function(t){},Object.defineProperty(h.prototype,"size",{get:function(){return{width:this._size.width,height:this._size.height}},set:function(t){var e=this.element,i=.5;e.width=t.width*i,e.height=t.height*i,e.style.width=t.width+"px",e.style.height=t.height+"px",this.context.scale(i,i),this._size={width:t.width,height:t.height},this.sizeDidChange(this._size)}}),a.prototype=Object.create(h.prototype),a.prototype.constructor=a,a.prototype.sizeDidChange=function(t){var e=this.context;e.imageSmoothingEnabled=!1,e.msImageSmoothingEnabled=!1,e.mozImageSmoothingEnabled=!1,e.webkitImageSmoothingEnabled=!1},a.prototype.createEntity=function(){var e,i,n=this.sprites.ditto,o=n.frames[0],h=t(0,1),a=t(4,16),r=(e=.1,i=1,Math.random()*(i-e)+e),s=t(400,1e3)*(h?1:-1),d=this.size.width,l=this.size.height,m={width:o.width,height:o.height},c={width:m.width*a,height:m.height*a};return{sprite:n,animationFrameDuration:.085,animationFrame:0,time:0,speed:{x:s,y:0},size:c,origin:{x:h?-c.width:d,y:t(0,l-c.height)},opacity:r,intrinsicSize:m}},a.prototype.render=function(){var t=this.context,e=this.size,i=e.width,n=e.height;t.globalAlpha=1,t.fillStyle=this.backgroundColor,t.fillRect(0,0,i,n);i>24&&n>24&&(t.roundedRect(32,32,i-64,n-64,12),t.fillStyle=this.containerColor,t.fill());for(var o=this.entities,h=0;h<o.length;h+=1){var a=o[h];t.globalAlpha=a.opacity,a.sprite.drawFrame(t,a.animationFrame,a.origin.x,a.origin.y,a.size.width,a.size.height)}},a.prototype.update=function(t){if(this.elapsedTime+=t,this.elapsedTime>=.4){this.elapsedTime=0,this.backgroundColor=e(),this.containerColor=e();for(var i=1;i--;)this.entities.push(this.createEntity())}var n=this.size.width,o=this.size.height,h=this.protagonist;if(h||((h=this.createEntity()).speed.x=0,h.opacity=1,this.entities.push(h),this.protagonist=h),h){var a={width:Math.min(.8*n,600),height:Math.min(.8*o,600)},r=h.intrinsicSize,s=a.width/r.width,d=a.height/r.height,l=Math.min(s,d),m={width:r.width*l,height:r.height*l};h.size=m,h.origin.x=Math.round(.5*(n-m.width)),h.origin.y=Math.round(.5*(o-m.height))}for(var c=[],p=this.entities,u=0;u<p.length;u+=1){var g=p[u];if(g.time+=t,g.time>=g.animationFrameDuration){var w=g.animationFrame+1;g.time=0,g.animationFrame=w<g.sprite.frames.length?w:0}0!=g.speed.x&&(g.origin.x+=g.speed.x*t|0),(g.origin.x>n||g.origin.x<=-g.size.width)&&c.push(u)}for(var f=c.length-1;f>=0;f-=1){p.splice(c[f],1)[0]===this.protagonist&&(this.protagonist=null)}},r.prototype.handleResize=function(){this.scene.size={width:Math.floor(window.innerWidth),height:Math.floor(window.innerHeight)}},document.addEventListener("DOMContentLoaded",function(){window.controller=new r(document.body)})}();
+  </script>
+  <script crossorigin="anonymous" data-cf-beacon='{"version":"2024.11.0","token":"92dbe8c61d07499da37be22882c967a9","r":1,"spa":2}' integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" src="__files/vce701823e78c4301a35b7e07294d87301792088814092_VPYp" type="module">
+  </script>
+  <canvas height="258" style="width: 1920px; height: 517px; display: none;" width="960">
+  </canvas>
+ </body>
+</html>
